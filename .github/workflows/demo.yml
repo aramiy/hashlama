@@ -11,9 +11,8 @@ jobs:
     steps:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
-        
+          
       - name: Login to Registry
         run: |
-          sudo chmod +w /etc/hosts
-          sudo echo "23.97.135.89 hub.ofek.hugi" >> /etc/hosts
+          sudo echo "23.97.135.89 hub.ofek.hugi" | sudo tee -a /etc/hosts
           docker login -u ${{ secrets.HARBOR_USER }} -p ${{ secrets.HARBOR_PASS }} hub.ofek.hugi:8443
