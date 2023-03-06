@@ -17,4 +17,4 @@ jobs:
         with:
           registry: 192.186.0.115
           username: ${{ secrets.HARBOR_USER }}
-          password: ${{ secrets.HARBOR.PASS }}
+          password: ${{ secrets.HARBOR_PASS }}
