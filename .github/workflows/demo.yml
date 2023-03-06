@@ -15,4 +15,4 @@ jobs:
       - name: Login to Registry
         run: |
           echo ""
-          docker login -u ${{ secrets.HARBOR_USER }} -p ${{ secrets.HARBOR_PASS }} --tlsverify=false 23.97.135.89:8443
+          docker --tlsverify=false login -u ${{ secrets.HARBOR_USER }} -p ${{ secrets.HARBOR_PASS }} 23.97.135.89:8443
