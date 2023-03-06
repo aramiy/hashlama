@@ -16,4 +16,4 @@ jobs:
         run: |
           sudo chmod +w /etc/hosts
           sudo echo "23.97.135.89 hub.ofek.hugi" >> /etc/hosts
-          docker --tlsverify=false login -u ${{ secrets.HARBOR_USER }} -p ${{ secrets.HARBOR_PASS }} hub.ofek.hugi:8443
+          docker login -u ${{ secrets.HARBOR_USER }} -p ${{ secrets.HARBOR_PASS }} hub.ofek.hugi:8443
