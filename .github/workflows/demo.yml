@@ -14,6 +14,7 @@ jobs:
           
       - name: Login to Registry
         run: |
+          sudo mkdir -p "/etc/docker/certs.d/ofek.hugi:8443"
           sudo touch /etc/docker/certs.d/ofek.hugi:8443/ca.crt
           sudo echo "${{ secrets.HUBCERTIFICATE }}" | sudo tee -a /etc/docker/certs.d/ofek.hugi:8443/ca.crt
           sudo echo "23.97.135.89 ofek.hugi" | sudo tee -a /etc/hosts
