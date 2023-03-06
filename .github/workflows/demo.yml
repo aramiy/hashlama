@@ -18,3 +18,5 @@ jobs:
           registry: 192.168.0.115
           username: ${{ secrets.HARBOR_USER }}
           password: ${{ secrets.HARBOR_PASS }}
+          ecr: auto
+          logout: false
