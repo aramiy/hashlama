@@ -16,8 +16,8 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: 192.186.0.115
-          username: ${{ secret.HARBOR_USER }}
-          password: ${{ secret.HARBOR.PASS }}
+          username: ${{ secrets.HARBOR_USER }}
+          password: ${{ secrets.HARBOR.PASS }}
           
     
   
