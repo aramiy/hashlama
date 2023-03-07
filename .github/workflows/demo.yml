@@ -18,6 +18,7 @@ jobs:
             sudo echo "    "insecure-registries" : [ "ofek.hugi:8443" ]" | sudo tee -a /etc/docker/daemon.json
             sudo echo "}" | sudo tee -a /etc/docker/daemon.json
             docker login -u ${{ secrets.HARBOR_USER }} -p ${{ secrets.HARBOR_PASS }} ofek.hugi:8443
+
 #             sudo echo "{" | sudo tee -a /etc/docker/daemon.json
 #             sudo echo "    "insecure-registries" : [ "108.143.193.224" ]" | sudo tee -a /etc/docker/daemon.json
 #             sudo echo "}" | sudo tee -a /etc/docker/daemon.json
