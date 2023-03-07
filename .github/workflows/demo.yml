@@ -1,12 +1,11 @@
-name: build and deploy 
+name: ci
 
 on:
   push:
-    branches: ["main"]
-  
+    branches: main
+
 jobs:
-  build: 
-    name: Build 
+  login:
     runs-on: ubuntu-latest
     steps:
       -
@@ -15,5 +14,4 @@ jobs:
         with:
           registry: 108.143.193.224
           username: ${{ github.HARBOR_USER }}
-          password: ${{ secrets.HARBOR_PASS }}
-#ddd
+          password: ${{ github.HARBOR_PASS }}
