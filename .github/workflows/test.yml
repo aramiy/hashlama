@@ -15,4 +15,3 @@ jobs:
       with: # defaults to latest kubectl binary version
         config: ${{ secrets.KUBE_CONFIG_DATA }}
         command: get pods
-        #e
