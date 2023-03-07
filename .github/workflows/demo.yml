@@ -8,10 +8,14 @@ jobs:
   login:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Login to harbor Container Registry
-        uses: docker/login-action@v2
-        with:
-          registry: 108.143.193.224
-          username: ${{ secrets.HARBOR_USER }}
-          password: ${{ secrets.HARBOR_PASS }}
+        - name: reg
+          run: |
+            sudo echo "{" | sudo tee -a /etc/docker/daemon.json
+            sudo echo "    "insecure-registries" : [ "108.143.193.224" ]" | sudo tee -a /etc/docker/daemon.json
+            sudo echo "}" | sudo tee -a /etc/docker/daemon.json
+        - name: Login to harbor Container Registry
+          uses: docker/login-action@v2
+          with:
+            registry: 108.143.193.224
+            username: ${{ secrets.HARBOR_USER }}
+            password: ${{ secrets.HARBOR_PASS }}
