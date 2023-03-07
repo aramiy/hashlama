@@ -8,6 +8,10 @@ jobs:
   login:
     runs-on: ubuntu-latest
     steps:
+    
+      - name: Kuberentes (k8s) cli - kubectl
+        uses: actions-hub/kubectl@v1.24.0
+
       - uses: actions-hub/kubectl@master
         env:
           KUBE_HOST: ${{ secrets.KUBE_HOST }}
