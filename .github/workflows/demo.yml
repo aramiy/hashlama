@@ -10,10 +10,18 @@ jobs:
     steps:
         - name: reg
           run: |
+            sudo mkdir -p "/etc/docker/certs.d/ofek.hugi:8443"
+            sudo touch /etc/docker/certs.d/ofek.hugi:8443/ca.crt
+            sudo echo "${{ secrets.HUBCERTIFICATE }}" | sudo tee -a /etc/docker/certs.d/ofek.hugi:8443/ca.crt
+            sudo echo "23.97.135.89 ofek.hugi" | sudo tee -a /etc/hosts
             sudo echo "{" | sudo tee -a /etc/docker/daemon.json
-            sudo echo "    "insecure-registries" : [ "108.143.193.224" ]" | sudo tee -a /etc/docker/daemon.json
+            sudo echo "    "insecure-registries" : [ "ofek.hugi:8443" ]" | sudo tee -a /etc/docker/daemon.json
             sudo echo "}" | sudo tee -a /etc/docker/daemon.json
-            docker login -u ${{ secrets.HARBOR_USER }} -p ${{ secrets.HARBOR_PASS }} 108.143.193.224
+            docker login -u ${{ secrets.HARBOR_USER }} -p ${{ secrets.HARBOR_PASS }} ofek.hugi:8443
+#             sudo echo "{" | sudo tee -a /etc/docker/daemon.json
+#             sudo echo "    "insecure-registries" : [ "108.143.193.224" ]" | sudo tee -a /etc/docker/daemon.json
+#             sudo echo "}" | sudo tee -a /etc/docker/daemon.json
+#             docker login -u ${{ secrets.HARBOR_USER }} -p ${{ secrets.HARBOR_PASS }} 108.143.193.224
             
             
         #- name: Login to harbor Container Registry
