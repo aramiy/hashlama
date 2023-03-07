@@ -9,28 +9,6 @@ jobs:
     name: Build 
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-          
-The actions/docker action has now been deprecated. If you visit the repository you will see that the repository is archived and has the following message.
-
-This action is deprecated in favor of using the run script step in the new YAML language to run the docker cli.
-
-https://github.com/actions/docker
-
-So the recommended way to login to Docker registries is to use the run script command as follows.
-
-For the public DockerHub registry:
-
-name: my workflow
-on:
-  push:
-    branches:
-      - master
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
       - uses: actions/checkout@v1
       - name: Login to DockerHub Registry
         run: echo ${{ secrets.HARBOR_PASS }} | docker login 108.143.193.224 -u ${{ secrets.HARBOR_PASS }} --password-stdin
